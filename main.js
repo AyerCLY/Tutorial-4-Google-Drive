@@ -1,3 +1,4 @@
+
 /* 
 function (Parameters 參數)
 Parameters 參數 = Argurments = Inputs  
@@ -59,7 +60,7 @@ function GDrive_plus (_user, _quota){
 /* Inheritance 
 @see https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance#setting_teachers_prototype_and_constructor_reference
  */
-GDrive_plus.protype = Object.create(GDrive.prototype);
+GDrive_plus.prototype = Object.create(GDrive.prototype);
 Object.defineProperty(GDrive_plus.prototype,'constructor',{
   value: GDrive_plus,
   enumerable: false, // so that it does not appear in 'for in' loop
@@ -168,3 +169,14 @@ console.log(File.parseFileSize('10.5GB')); // 11274289152
 
 var file = new File('Testing file.doc', '30MB', '...');
 console.log(file.getFileSize());       // 31457280
+
+var ayer = new User('ayer@gmail.com', 'Ayer');
+var ayer_gdrive = new GDrive_plus(ayer,"100GB");
+ayer_gdrive.upload(new File('Testing.docx', '3MB', 'Hello, world!fasjdhfkjashdfkasdf'));
+ayer_gdrive.upload(new File('Testing2.docx', '15GB', 'Lorem .....'));
+console.log(ayer_gdrive.user);
+console.log(ayer_gdrive.quota);
+console.log(File.getSize('10.5GB'));
+console.log(File.getUnit('30TB'));
+console.log(File.parseUnit('GB)'));
+console.log(File.parseFileSize('10.5GB'));
